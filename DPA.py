@@ -17,7 +17,7 @@ import json
 def crear_driver():
     log_file = 'selenium.log'
     options = Options()
-    #options.add_argument('--headless')  # modo headless (SIN VISTA)
+    options.add_argument('--headless')  # modo headless (SIN VISTA)
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36")
     
     return webdriver.Chrome(options=options)
@@ -32,7 +32,7 @@ HoraInicio1 = "20:00"
 HoraTermino1 = "21:00"
 HoraInicio2 = "21:00"
 HoraTermino2 = "22:00"
-webhook_url = "https://discord.com/api/webhooks/1224428289951793244/qgUT4ZzRY4zUwy2xW4QtEZbs_nelsHBCjUqK3MwBxhLuse1LV-zIcbpNF8J"
+webhook_url = "https://discord.com/api/webhooks/1224428289951793244/qgUT4ZzRY4zUwy2xW4QtEZbs_nelsHBCjUqK3MwBxhLuse1LV-zIcbpNF8J40bWS3myi"
 HoraEjecucion1 = "00:01"
 HoraEjecucion2 = "00:05"
 gabriela = 2539
@@ -109,7 +109,7 @@ def btnFinal(driver):
         boton_confirmar = driver.find_element('css selector', '.btn.btn--primary.js-complexFormButton.js-complexFormButton-Submit')
 
         # Hacer clic en el botón "Confirmar"
-        #boton_confirmar.click()
+        boton_confirmar.click()
         return "Succed:"
     except NoSuchElementException as e:
         return "DataError: " + str(e)
@@ -169,12 +169,12 @@ def job(Recinto, Reintento,HoraInicio,HoraTermino):
 # Programación de tareas
 try:
 
-    #schedule.every().friday.at(HoraEjecucion1).do(lambda: job(gabriela, 0,HoraInicio1,HoraTermino1))
-    #schedule.every().friday.at(HoraEjecucion2).do(lambda: job(gabriela, 0,HoraInicio2,HoraTermino2))
-    #schedule.every().wednesday.at(HoraEjecucion1).do(lambda: job(gabriela, 0,"19:00","20:00"))
-    #schedule.every().wednesday.at(HoraEjecucion2).do(lambda: job(gabriela, 0,HoraInicio1,HoraTermino1))
+    schedule.every().friday.at(HoraEjecucion1).do(lambda: job(gabriela, 0,HoraInicio1,HoraTermino1))
+    schedule.every().friday.at(HoraEjecucion2).do(lambda: job(gabriela, 0,HoraInicio2,HoraTermino2))
+    schedule.every().wednesday.at(HoraEjecucion1).do(lambda: job(gabriela, 0,"19:00","20:00"))
+    schedule.every().wednesday.at(HoraEjecucion2).do(lambda: job(gabriela, 0,HoraInicio1,HoraTermino1))
 
-    job(gabriela, 0,"20:00","21:00")
+    #job(gabriela, 0,"20:00","21:00")
     #schedule.every().monday.at('04:39:00').do(lambda: job(gabriela, 0,HoraInicio1,HoraTermino1))
     #schedule.every().monday.at('04:40:00').do(lambda: job(gabriela, 0,HoraInicio1,HoraTermino1))
 
